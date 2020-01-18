@@ -13,29 +13,32 @@ def run_pylint():
     parser.add_argument('--error-threshold', type=float, default=9.9999999999)
     score_opts, remaining_args = parser.parse_known_args( sys.argv[1:] )
     threshold_score=vars(score_opts)['error_threshold'] 
-    msg="Minimum score: {0}".format(threshold_score)
+    msg="PyLint Required Minimum Score: {0}".format(threshold_score)
     print(msg)
    
     cmd = ["pylint"] + remaining_args
     results = subp.run( cmd, stdout=subp.PIPE)
     
-    if results.returncode != 0:
-        sys.exit(results.returncode)
-    
-    # Check the output...
     data = results.stdout.decode('utf-8')
     print(data)
+    
+    # Check the output...
     score=SUMMARY_LINE.search(data)
     if not score:
         print('Unable to find the summary line!')
         exit(1)
     
     numeric_score = float(score.groups()[0])
-    if numeric_score < score_opts.error_threshold:
-       print(data)
-       print("PYLINT SCORE DID NOT MEET MINIMUM THRESHOLD OF: ".format(score_opts.error_threshold))
-       exit(1)
+    if numeric_score >= threshold_score:
+       print('*'*80)
+       print("PyLint Score satisfies minimum score: {0}".format(threshold_score))
+       print('*'*80)
+       exit(0)
     
+    print('*'*80)
+    print("PYLINT SCORE DID NOT SATISFY MINIMUM SCORE: ".format(threshold_score))
+    print('*'*80)
+    exit(1)
 
 
 run_pylint()
