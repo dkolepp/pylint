@@ -1,7 +1,7 @@
 ---
 - id: pylint
   name: pylint
-  entry: pylint-shim
+  entry: pylint-shim.py
   language: python
   types: [python]
   files: \.py$

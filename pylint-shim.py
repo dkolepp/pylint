@@ -1,7 +1,8 @@
-import sys
-import argparse
+#!/usr/bin/env python
+
 import subprocess as subp
 import re
+import argparse
 
 SUMMARY_LINE=re.compile('Your code has been rated at ([0-9.]+)/10')
 
@@ -9,7 +10,7 @@ def run_pylint():
     """run pylint with a pre-commit wrapper"""
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--error-threshold', type=float, default=9.9999999999999)
+    parser.add_argument('--error-threshold', type=float, default=9.9999999999)
     score_opts, remaining_args = parser.parse_known_args( sys.argv[1:] )
     threshold_score=vars(score_opts)['error_threshold'] 
     msg="Minimum score: {0}".format(threshold_score)
@@ -36,5 +37,3 @@ def run_pylint():
        exit(1)
     
 
-
- 
