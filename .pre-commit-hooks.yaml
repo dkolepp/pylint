@@ -1,0 +1,9 @@
+---
+- id: pylint
+  name: pylint
+  entry: pylint-shim
+  language: python
+  types: [python]
+  files: \.py$
+  args:
+    - "--error-threshold=9.9999"
