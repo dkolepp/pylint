@@ -37,3 +37,6 @@ def run_pylint():
        exit(1)
     
 
+
+run_pylint()
+
