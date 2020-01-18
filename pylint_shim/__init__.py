@@ -31,6 +31,7 @@ def run_pylint():
     
     numeric_score = float(score.groups()[0])
     if numeric_score < score_opts.error_threshold:
+       print(data)
        print("PYLINT SCORE DID NOT MEET MINIMUM THRESHOLD OF: ".format(score_opts.error_threshold))
        exit(1)
     
