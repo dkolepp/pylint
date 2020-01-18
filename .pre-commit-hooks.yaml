@@ -1,11 +1,10 @@
 ---
 - id: pylint
-  name: pylint
+  name: PyLint Minimum Score
   entry: pylint-shim.py
   language: python
   types: [python]
-  verbose: true
   require_serial: true
   files: \.py$
   args:
-    - "--error-threshold=8.0"
+    - "--error-threshold=9.9"
