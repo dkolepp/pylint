@@ -44,9 +44,9 @@ repos:
         stages: [commit-msg]
         additional_dependencies: ['@commitlint/config-conventional']
 
-#  - repo: https://github.com/dkolepp/pylint
-#    rev: master
-#    hooks:
-#      - id: pylint
-#        args:
-#          - "--error-threshold=8.0"
+  - repo: https://github.com/dkolepp/pylint
+    rev: master
+    hooks:
+      - id: pylint
+        args:
+          - "--error-threshold=8.0"
