@@ -1,1 +1,2 @@
 pylint=2.6
+isort=5.0
